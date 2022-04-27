@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../comman.css">
+    <title>Frontend</title>
+
+    <style>
+        #navbar {
+            margin-bottom: 50px;
+        }
+        
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, auto);
+            gap: 20px;
+        }
+        
+        p+img {
+            height: 50px;
+            margin: auto;
+            display: block;
+        }
+        
+        p,
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Frontend</h1>
+    <div id="navbar">
+        <div><a href="backend.html">Backend</a> </div>
+        <div><a href="frontend.html">Frontend</a></div>
+
+    </div>
+    <div id="container"></div>
+</body>
+
+</html>
+
+<script>
+    var incestorArr = JSON.parse(localStorage.getItem("investorData"));
+
+    incestorArr.forEach(function(elem) {
+        var box = document.createElement("div")
+        var investorAvator = document.createElement("img");
+        investorAvator.setAttribute("src", elem.InvestorImg)
+
+        var investorName = document.createElement("h3");
+        investorName.innerText = elem.InvestorName;
+
+        var investorRole = document.createElement("p")
+        investorRole.innerText = elem.InvestorRole;
+
+        var investorLogo = document.createElement("img")
+        investorLogo.setAttribute("src", elem.InvestorLogo)
+
+        box.append(investorAvator, investorName, investorRole, investorLogo)
+        document.querySelector("#container").append(box)
+
+
+    })
+    console.log(incestorArr)
+</script>
